@@ -1,5 +1,7 @@
 <script setup>
-import HomePage from "./views/HomePage.vue";
+import { RouterLink, RouterView } from 'vue-router'
+
+import HomeView from './views/HomeView.vue';
 import NavBar from "./components/NavBar.vue";
 import Footer from "./components/Footer.vue";
 
@@ -20,23 +22,9 @@ import TeacherSelection from "./views/teacher/TeacherSelection.vue";
 <template>
   <div class="h-screen w-screen flex flex-col justify-between">
     <NavBar />
-    <!-- <HomePage /> -->
-
-    <!-- 学生 -->
-    <!-- <StudentLogin /> -->
-    <!-- <StudentHome /> -->
-    <!-- <StudentInfo /> -->
-    <!-- <StudentInfoUpdated /> -->
-    <!-- <StudentSelection /> -->
-    <!-- <StudentSelectionUpdated /> -->
-    <!-- <StudentSelectionDeleted /> -->
-
-
-    <!-- 教師 -->
-    <!-- <TeacherHome /> -->
-    <TeacherSelection />
-
-
+    <div class="bg-secondary grow flex flex-col justify-center items-center">
+      <RouterView />
+    </div>
     <Footer />
   </div>
 </template>

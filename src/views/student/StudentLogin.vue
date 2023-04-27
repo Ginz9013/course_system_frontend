@@ -1,11 +1,35 @@
 <script>
+import router from '../../router';
+
 export default {
-    
+    data() {
+        return {
+            studentID: "",
+            studentName: ""
+        }
+    },
+    methods: {
+        login() {
+            if(this.studentID === "") {
+                alert("学生IDを入力してください")
+                return;
+            }
+
+            if(this.studentName === "") {
+                alert("学生名前を入力してください")
+                return;
+            }
+
+            sessionStorage.setItem("studentID", this.studentID);
+            sessionStorage.setItem("studentName", this.studentName);
+
+            router.push("/student");
+        },
+    }
 }
 </script>
 
 <template>
-    <div class="bg-secondary grow flex flex-col justify-center items-center">
         <h1 class="text-5xl font-bold text-darker mb-12">学生システム</h1>
         <form action="#" class="w-96 flex flex-col  items-center">
             <div class="student-id mb-6 w-full relative">
@@ -20,9 +44,10 @@ export default {
                     hover:scale-105
                     focus:bg-primary
                     focus:text-white"
+                    v-model="studentID"
                 >
                 <img
-                    src="../../../public/user-solid.svg" 
+                    src="/user-solid.svg" 
                     alt="Student"
                     class="w-4 absolute top-11 left-4"
                 >
@@ -39,9 +64,10 @@ export default {
                     hover:scale-105
                     focus:bg-primary
                     focus:text-white"
+                    v-model="studentName"
                 >
                 <img
-                    src="../../../public/user-solid.svg" 
+                    src="/user-solid.svg" 
                     alt="Student"
                     class="w-4 absolute top-11 left-4"
                 >
@@ -52,10 +78,9 @@ export default {
                 duration-100
                 hover:scale-105 hover:bg-darker
                 active:scale-95"
+                @click="login"
             >
                 ログイン
             </button>
         </form>
-        
-    </div>
 </template>
